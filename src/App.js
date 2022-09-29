@@ -11,6 +11,8 @@ const App = () => {
     // conitionally render components so that if the app is loading, the loading component is renderd. If it is not loading and there are posts, the posts and in turn postItem components are renderd
 
     // the end result is that you should be able to click on an individual post and console.log the id of that post. 
+
+    return <h1>This is the app component. Read instructions in app.js.</h1>
 }
 
 export default App
