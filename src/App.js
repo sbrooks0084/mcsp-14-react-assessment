@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+const App = () => {
+    // use the useEffect hook to make an initial API call to the url: 
+    const url = 'https://jsonplaceholder.typicode.com/posts'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // your stat should be: 
+        // posts and loading. 
+    // Use the useState hook to set the initial state
+
+    // your components should be app, posts, postItem, and loading
+
+    // conitionally render components so that if the app is loading, the loading component is renderd. If it is not loading and there are posts, the posts and in turn postItem components are renderd
+
+    // the end result is that you should be able to click on an individual post and console.log the id of that post. 
 }
 
-export default App;
+export default App
