@@ -1,18 +1,38 @@
+import { useEffect, useState } from "react"
+import Loading from './Components/Loading'
+import SinglePost from './Components/SinglePost'
+import Posts from './Components/Posts.js'
+import axios from 'axios'
+// your components should be app, posts, postItem, and loading
+
 const App = () => {
+    const [posts, setPosts] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [singlePost, setSinglePost] = useState(null)
     // use the useEffect hook to make an initial API call to the url: 
-    const url = 'https://jsonplaceholder.typicode.com/posts'
-
-    // your stat should be: 
-        // posts and loading. 
-    // Use the useState hook to set the initial state
-
-    // your components should be app, posts, postItem, and loading
-
-    // conitionally render components so that if the app is loading, the loading component is renderd. If it is not loading and there are posts, the posts and in turn postItem components are renderd
-
-    // the end result is that you should be able to click on an individual post and console.log the id of that post. 
-
-    return <h1>This is the app component. Read instructions in app.js.</h1>
+    useEffect(() => {
+        async function getPosts() {
+            const info = await axios.get('https://jsonplaceholder.typicode.com/posts')
+            setPosts(info.data)
+            setLoading(false)
+            //console.log(info.data)
+        }
+        getPosts()
+    }, [])
+    const handleSetSinglePost = (obj) => {
+        setSinglePost(obj)
+    }
+    const clearSinglePost = () => {
+        setSinglePost(null)
+    }
+    if(!loading && !singlePost) {
+        return <Posts postsProp={posts} handleSetSinglePost={handleSetSinglePost} />
+    }else if(!loading) {
+        return <SinglePost singlePost={singlePost} clearSinglePost={clearSinglePost}/>
+    }else {
+        return <Loading />
+    }
+   
 }
 
 export default App
